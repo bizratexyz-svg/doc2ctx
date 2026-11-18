@@ -1,5 +1,8 @@
 # doc2ctx
 
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 A zero-dependency Python CLI tool that fetches web documentation URLs and converts them into clean, AI-ready Markdown (`llms.txt` style) with token estimation.
 
 ## Features
@@ -35,6 +38,30 @@ uv run doc2ctx https://docs.python.org/3/library/pathlib.html -o pathlib-docs.md
 | `--max-tokens N` | Truncate output to approximately `N` tokens (`~chars/4`) |
 | `--timeout SEC` | HTTP request timeout in seconds (default: `15`) |
 | `--version` | Show version and exit |
+
+## Example Output
+
+```text
+$ uv run doc2ctx https://docs.python.org/3/library/pathlib.html --max-tokens 150
+# pathlib — Object-oriented filesystem paths
+
+> Source: https://docs.python.org/3/library/pathlib.html
+
+This module offers classes representing filesystem paths with semantics
+appropriate for different operating systems.
+
+## Basic use
+
+```python
+from pathlib import Path
+p = Path('.')
+[x for x in p.iterdir() if x.is_dir()]
+```
+
+<!-- [doc2ctx] Output truncated to fit --max-tokens limit -->
+
+[doc2ctx] ~148 tokens (590 chars, truncated)
+```
 
 ## License
 
